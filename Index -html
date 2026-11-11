@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Featured Offers | Discover and Stay Connected</title>
+<meta name="description" content="Explore featured partner offers and join our community for updates and support.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background: radial-gradient(circle at top, #1e3a8a 0%, #0f172a 70%);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+  .wrap { max-width: 480px; width: 100%; }
+  .hero { text-align: center; margin-bottom: 24px; }
+  .badge {
+    display: inline-block;
+    background: rgba(245,158,11,0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(245,158,11,0.4);
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  h1 { font-size: 30px; line-height: 1.25; margin-bottom: 10px; }
+  .lead { font-size: 16px; line-height: 1.6; color: #cbd5e1; }
+
+  .section-title { font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: #94a3b8; margin: 22px 0 10px; }
+
+  .card {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  }
+  .tag { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: #fbbf24; font-weight: 700; margin-bottom: 6px; }
+  .card h2 { font-size: 20px; margin-bottom: 6px; }
+  .card p { font-size: 15px; line-height: 1.55; color: #cbd5e1; margin-bottom: 14px; }
+
+  .btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .btn:hover { transform: translateY(-2px); opacity: 0.93; }
+  .offer { background: linear-gradient(90deg, #f59e0b, #f97316); color: #111; }
+  .offer:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+  .whatsapp { background: #25D366; }
+  .telegram { background: #229ED9; }
+
+  .bar { display: none; height: 8px; background: rgba(255,255,255,0.15); border-radius: 8px; overflow: hidden; margin: 6px 0 8px; }
+  .bar div { height: 100%; width: 0%; background: linear-gradient(90deg, #f59e0b, #f97316); transition: width 1s linear; }
+  .status { font-size: 14px; color: #fde68a; text-align: center; min-height: 20px; }
+  .note { font-size: 13px; color: #94a3b8; text-align: center; line-height: 1.5; margin-top: 6px; }
+  .footer { text-align: center; font-size: 12px; color: #64748b; margin-top: 24px; line-height: 1.6; }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 10;
+  }
+  .popup {
+    background: #fff;
+    color: #111;
+    border-radius: 18px;
+    padding: 30px 24px 24px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+  }
+  .popup h2 { font-size: 26px; margin-bottom: 8px; }
+  .popup p { color: #334155; font-size: 16px; line-height: 1.6; margin-bottom: 20px; }
+  .close { background: #64748b; margin-bottom: 0; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="hero">
+      <span class="badge">Hand-Picked Partner Offers</span>
+      <h1>Discover Featured Offers, All in One Place</h1>
+      <p class="lead">Explore curated offers from our advertising partners, and join our community to get updates and support.</p>
+    </div>
+
+    <div class="section-title">Featured Offers</div>
+
+    <div class="card">
+      <div class="tag">Featured</div>
+      <h2>Offer of the Day</h2>
+      <p>Take a look at this hand-picked partner offer. It opens in a new tab, so you can come back anytime.</p>
+      <button id="offerBtn1" class="btn offer">View Offer &rarr;</button>
+    </div>
+
+    <div class="card">
+      <div class="tag">More Offers</div>
+      <h2>Another Offer to Explore</h2>
+      <p>Here is one more partner offer worth a look. It also opens in a new tab.</p>
+      <button id="offerBtn2" class="btn offer">View Offer &rarr;</button>
+    </div>
+
+    <div class="bar" id="barBox"><div id="progress"></div></div>
+    <div class="status" id="status"></div>
+    <div class="note">After you open an offer, please keep this page open until the timer finishes.</div>
+
+    <div class="section-title">Join Our Community</div>
+    <a class="btn whatsapp wa" href="#" target="_blank" rel="noopener">Join Our WhatsApp Channel</a>
+    <a class="btn telegram tg" href="#" target="_blank" rel="noopener">Join Our Telegram Group</a>
+
+    <div class="footer">Offers are provided by our advertising partners and may include sponsored links.<br>&copy; 2026 All rights reserved.</div>
+  </div>
+
+  <div class="overlay" id="overlay">
+    <div class="popup">
+      <h2>Thank You!</h2>
+      <p>Thank you for visiting. Stay connected with us for updates, new offers and support.</p>
+      <a class="btn whatsapp wa" href="#" target="_blank" rel="noopener">Join Our WhatsApp Channel</a>
+      <a class="btn telegram tg" href="#" target="_blank" rel="noopener">Join Our Telegram Group</a>
+      <button class="btn close" id="closeBtn">Close</button>
+    </div>
+  </div>
+
+<script>
+  var CONFIG = {
+    WHATSAPP_URL: "https://whatsapp.com/channel/0029VbBgkdi4CrfdnEcCOJ1H",
+    TELEGRAM_URL: "https://t.me/TogetherAlwaysChat",
+    SMART_LINK_1: "https://www.profitableratecpmnetwork.com/sbk0jsaa?key=399ceef8b9b879e28a67fa2408536370",
+    SMART_LINK_2: "https://www.profitableratecpmnetwork.com/bux53u87m3?key=fd301759785781e906577519712bac6e",
+    WAIT_SECONDS: 50
+  };
+
+  document.querySelectorAll('.wa').forEach(function (a) { a.href = CONFIG.WHATSAPP_URL; });
+  document.querySelectorAll('.tg').forEach(function (a) { a.href = CONFIG.TELEGRAM_URL; });
+
+  var offerButtons = document.querySelectorAll('.offer');
+  var barBox = document.getElementById('barBox');
+  var bar = document.getElementById('progress');
+  var statusBox = document.getElementById('status');
+  var overlay = document.getElementById('overlay');
+  var running = false;
+
+  function startOffer(link) {
+    if (running) return;
+    running = true;
+
+    window.open(link, '_blank', 'noopener');
+
+    var left = CONFIG.WAIT_SECONDS;
+    offerButtons.forEach(function (b) { b.disabled = true; });
+    barBox.style.display = 'block';
+    bar.style.width = '0%';
+    statusBox.textContent = 'Please wait ' + left + ' seconds...';
+
+    var timer = setInterval(function () {
+      left--;
+      bar.style.width = ((CONFIG.WAIT_SECONDS - left) / CONFIG.WAIT_SECONDS * 100) + '%';
+      if (left > 0) {
+        statusBox.textContent = 'Please wait ' + left + ' seconds...';
+      } else {
+        clearInterval(timer);
+        running = false;
+        offerButtons.forEach(function (b) { b.disabled = false; });
+        statusBox.textContent = 'Completed. Thank you!';
+        overlay.style.display = 'flex';
+      }
+    }, 1000);
+  }
+
+  document.getElementById('offerBtn1').onclick = function () { startOffer(CONFIG.SMART_LINK_1); };
+  document.getElementById('offerBtn2').onclick = function () { startOffer(CONFIG.SMART_LINK_2); };
+  document.getElementById('closeBtn').onclick = function () { overlay.style.display = 'none'; };
+</script>
+</body>
+</html>
